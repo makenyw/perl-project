@@ -7,12 +7,9 @@ unless ( -e $dnafile) {
      print "File \"$dnafile\" doesn\'t seem to exist!!\n";
      exit;
 }
-unless (open (DNAFILE , $dnafile)) {
-     print "Cannot open file \"$dnafile\"\n\n";
-     exit;
-}
-@DNA = <DNAFILE>;
-close DNAFILE;
+open $DNAFILE,'<',$dnafile or die "$0:failed to open input file '$dnafile':$!\n";
+@DNA = <$DNAFILE>;
+close $DNAFILE or warn "$0:failed to close input file '$dnafile':$!\n";                                           
 $DNA  = join ('',@DNA);
 $DNA =~s/\s//g;
 $a = 0;
