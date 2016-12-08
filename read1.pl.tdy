@@ -1,0 +1,17 @@
+#! /usr/bin/perl -w
+
+$profile = 'protein.pep';
+unless ( open( PROTEIN, $profile ) ) {
+
+    print "Could not open file $profile ! \n";
+    exit;
+}
+
+while ( $protein = <PROTEIN> ) {
+
+    print " ##### Here is the next line of the file : \n";
+    print $protein;
+}
+close PROTEIN;
+exit;
+
